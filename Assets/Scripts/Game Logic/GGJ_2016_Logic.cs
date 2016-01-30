@@ -78,6 +78,9 @@ public class GGJ_2016_Logic : MonoBehaviour {
         // We reload the scene
         Toolbox.Instance.GameManager.GameLevelController.LoadScene(0);
 
+		//LUKAS ADDED THIS CODE
+		Toolbox.Instance.GameManager.darknessScript.ResetDarkness();
+
         // We set the player back in the initialGame Pos
         SetPlayerInitialGamePos();
     }
