@@ -21,6 +21,12 @@ public class GGJ_2016_Logic : MonoBehaviour {
     [SerializeField]
     private GameObject m_MainMenuGameObj;
 
+    /// <summary>
+    /// (Field) Integer that controls the amount of days passed
+    /// </summary>
+    [SerializeField]
+    private int m_DayCount;
+
 	// Use this for initialization
 	void Start () {
         // When the game starts, the player is seeing the main menu
@@ -83,6 +89,9 @@ public class GGJ_2016_Logic : MonoBehaviour {
 
         // We set the player back in the initialGame Pos
         SetPlayerInitialGamePos();
+
+        // We increase in one the dayCount (we slept another day)
+        m_DayCount++;
     }
 
     /// <summary>
@@ -98,5 +107,8 @@ public class GGJ_2016_Logic : MonoBehaviour {
 
         // We set the player back in the mainMenu Pos
         SetPlayerInMainMenu();
+
+        // We reset the dayCount
+        m_DayCount = 0;
     }
 }
