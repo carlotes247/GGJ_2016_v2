@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GGJ_2016_Logic : MonoBehaviour {
 
@@ -20,6 +21,24 @@ public class GGJ_2016_Logic : MonoBehaviour {
     /// </summary>
     [SerializeField]
     private GameObject m_MainMenuGameObj;
+
+    /// <summary>
+    /// (Field) Integer that controls the amount of days passed
+    /// </summary>
+    [SerializeField]
+    private int m_DayCount;
+
+    /// <summary>
+    /// (Field) The UI Text that shows the day count
+    /// </summary>
+    [SerializeField]
+    private Text m_DayCountUIText;
+
+    /// <summary>
+    /// (Field) The animator of the dayCount
+    /// </summary>
+    [SerializeField]
+    private Animator m_DayCountAnim;
 
 	// Use this for initialization
 	void Start () {
@@ -83,6 +102,14 @@ public class GGJ_2016_Logic : MonoBehaviour {
 
         // We set the player back in the initialGame Pos
         SetPlayerInitialGamePos();
+
+        // We increase in one the dayCount (we slept another day)
+        m_DayCount++;
+        // We paint it on the UI Text
+        Toolbox.Instance.GameManager.HudController.UpdateUIText(m_DayCountUIText, "Day " + m_DayCount.ToString());
+        // We Fade In the canvas
+        m_DayCountAnim.Play("Fade_In_UI");
+        
     }
 
     /// <summary>
@@ -98,5 +125,8 @@ public class GGJ_2016_Logic : MonoBehaviour {
 
         // We set the player back in the mainMenu Pos
         SetPlayerInMainMenu();
+
+        // We reset the dayCount
+        m_DayCount = 0;
     }
 }

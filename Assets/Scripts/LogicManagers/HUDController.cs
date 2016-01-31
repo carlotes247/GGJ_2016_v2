@@ -100,4 +100,14 @@ public class HUDController : MonoBehaviour
             Debug.Log("Score on HUD: " + ScoreText.text);
         }
     }
+
+    /// <summary>
+    /// Updates the text in a UIText
+    /// </summary>
+    /// <param name="textObjective"> The UI Text to update</param>
+    /// <param name="textToWrite"> The string to write there</param>
+    public void UpdateUIText (Text textObjective, string textToWrite)
+    {
+        textObjective.text = textToWrite;
+    }
 }
