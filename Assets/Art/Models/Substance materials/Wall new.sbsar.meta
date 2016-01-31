@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1162fe3f81ea1d449a1a44528177a437
-timeCreated: 1454231920
+guid: 348411b862b6c39408fb2969c251e7df
+timeCreated: 1454233041
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -9,10 +9,24 @@ SubstanceImporter:
     name: Tiles_floor
     prototypeName: Tiles_floor
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+    shaderKeywords: 
     renderQueue: -1
     lightmapFlags: 5
     inputs:
+    - name: Cracks_withdt
+      value:
+        scalar[0]: 0.9
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Tiles_ammount
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
     - name: $randomseed
       value:
         scalar[0]: 0
@@ -22,14 +36,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Tile_roughness_highlights
       value:
-        scalar[0]: 1
+        scalar[0]: 0.48
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Tiles_roughness_general
       value:
-        scalar[0]: 1
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -41,20 +55,6 @@ SubstanceImporter:
         scalar[2]: 0.729412
         scalar[3]: 0
         texture: {instanceID: 0}
-    - name: Tiles_ammount
-      value:
-        scalar[0]: 2.6
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-    - name: Cracks_withdt
-      value:
-        scalar[0]: 1.2
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
     - name: Normal_intensity
       value:
         scalar[0]: 1.5
@@ -64,15 +64,22 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: cracks_color
       value:
-        scalar[0]: 0.27451
-        scalar[1]: 0.278431
-        scalar[2]: 0.278431
+        scalar[0]: 0.86764705
+        scalar[1]: 0.59331745
+        scalar[2]: 0.7579153
+        scalar[3]: 0.847
+        texture: {instanceID: 0}
+    - name: Roughness_master
+      value:
+        scalar[0]: 0.5
+        scalar[1]: 0
+        scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 2, y: 2}
+      scale: {x: 1, y: 1}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -84,14 +91,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -119,7 +126,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -140,7 +147,7 @@ SubstanceImporter:
             name: _MetallicGlossMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 2, y: 2}
+            scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
       floats:
         data:
@@ -199,7 +206,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 0.38235295, b: 0.38235295, a: 1}
+          second: {r: 1, g: 1, b: 1, a: 1}
     textureParameters:
     - name: Tiles_floor_basecolor
       alphaSource: 6
