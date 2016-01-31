@@ -24,6 +24,7 @@ public class Darkness : MonoBehaviour {
 
 	public Light[] environmentLights;
 
+	public GameObject[] nightmares = new GameObject[13];
 	// Use this for initialization
 	public void InitiateCamera () {
 //		theCamera = GameObject.Find ("MainCamera");
@@ -32,12 +33,11 @@ public class Darkness : MonoBehaviour {
 		initSSAORadius = theCamera.GetComponent<SSAOPro> ().Radius;
 		initVignetteIntensity = theCamera.GetComponent<FastVignette> ().Darkness;
 		audioSrc = GetComponent <AudioSource> ();
-		print (audioSrc);
 	}
 	void Start(){
 		
 //		substance = ocdRenderer.GetComponent<Renderer> ().sharedMaterial as ProceduralMaterial;
-
+		nightmares = GameObject.FindGameObjectsWithTag("Nightmares");
 		InitiateCamera ();
 	}
 	// Update is called once per frame
@@ -57,9 +57,10 @@ public class Darkness : MonoBehaviour {
 			theCamera.GetComponent<SSAOPro> ().Intensity = initSSAOIntensity + maxSSAOIntensity * darknessVariable / 100;
 			theCamera.GetComponent<SSAOPro> ().Radius = initSSAORadius + maxSSAORadius * darknessVariable / 100;
 		}
-		if(darknessVariable > 50 && darknessVariable < 70){
-//			substance.SetProceduralFloat("OCD_mask", 1f * darknessVariable / 100);
-//			substance.RebuildTextures ();
+		if(darknessVariable > 70 ){
+			for(int i = 0; i < nightmares.Length; i++){
+				nightmares[i].GetComponent<Renderer>().material.SetFloat ("_node_4355", -1.5f + (0.4f * ((darknessVariable-70)/100)));
+			}
 		}
 //		substance.SetProceduralFloat("OCD_mask", 1f * darknessVariable / 100);
 //		substance.RebuildTextures ();
@@ -80,6 +81,7 @@ public class Darkness : MonoBehaviour {
 			audioSrc.Play ();
 //			ocdMat.SetFloat ("OCD_Mask", 1f);
 		} else if(darknessVariable > 70 && audioSrc.clip != ambientSounds [3]){
+			
 			audioSrc.clip = ambientSounds [3];
 			audioSrc.Play ();
 		}
