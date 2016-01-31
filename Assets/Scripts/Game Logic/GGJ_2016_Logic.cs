@@ -39,6 +39,26 @@ public class GGJ_2016_Logic : MonoBehaviour {
     /// </summary>
     [SerializeField]
     private Animator m_DayCountAnim;
+    /// <summary>
+    /// (Property) The animator of the dayCount
+    /// </summary>
+    public Animator DayCountAnim { get { return m_DayCountAnim; } }
+
+    /// <summary>
+    /// (Field) The script Mario prepared for the animation of the player when is waking up
+    /// </summary>
+    [SerializeField]
+    private PlayerWakeUp m_PlayerWakeAnimScript;
+
+    /// <summary>
+    /// (Field) The script Mario prepared for the animation of the player when is winning
+    /// </summary>
+    [SerializeField]
+    private PlayerWinTheGame m_PlayerWinAnimScript;
+    /// <summary>
+    /// (Property) The script Mario prepared for the animation of the player when is winning
+    /// </summary>
+    public PlayerWinTheGame PlayerWinAnimScript { get { return this.m_PlayerWinAnimScript; } }
 
 	// Use this for initialization
 	void Start () {
@@ -83,7 +103,7 @@ public class GGJ_2016_Logic : MonoBehaviour {
         // We set the position of the player to the desired one
         Toolbox.Instance.GameManager.Player.ObjectTransform.position = m_PositionPlayerInitialGame;
         // We set the rotation of the player/camera to zero
-        Toolbox.Instance.GameManager.InputController.RestartRotationCameraPlayer();
+        Toolbox.Instance.GameManager.InputController.RestartRotationCameraPlayer();        
     }
 
     /// <summary>
@@ -109,7 +129,16 @@ public class GGJ_2016_Logic : MonoBehaviour {
         Toolbox.Instance.GameManager.HudController.UpdateUIText(m_DayCountUIText, "Day " + m_DayCount.ToString());
         // We Fade In the canvas
         m_DayCountAnim.Play("Fade_In_UI");
-        
+
+        // If it is the first day...
+        if (m_DayCount < 2)
+        {
+            // We deactivate the player
+            Toolbox.Instance.GameManager.Player.gameObject.SetActive(false);
+            // With the player unactive, we play the wake up animation
+            m_PlayerWakeAnimScript.StartTheAnimation();
+        }
+
     }
 
     /// <summary>
